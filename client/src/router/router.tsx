@@ -1,6 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Home } from '../pages/home/Home';
 import { Layout } from '../components/layout/Layout';
+import { Home } from '../pages/home/Home';
+import { Settings } from '../pages/settings/Settings';
+import { Recommendation } from '../pages/recommendation/Recommendation';
 
 export const router = createBrowserRouter([
   {
@@ -8,8 +10,8 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      // { path: 'about', element: <About /> },
-      
+      { path: 'settings', element: <Settings /> },
+      { path: 'recommendation', element: <Recommendation /> },
     ],
   },
 ]);

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, Container } from '@mui/material';
 import { Navigation } from '../navigation/Navigation';
 
 export const Layout: React.FC = () => {
@@ -7,7 +7,9 @@ export const Layout: React.FC = () => {
     <>
       <CssBaseline />
       <Navigation />
-      <Outlet />
+      <Container maxWidth='xl'>
+        <Outlet />
+      </Container>
     </>
   );
 };
