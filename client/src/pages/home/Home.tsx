@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { MovieCard } from '../../components/movie-card/MovieCard';
 import { movies } from '../../stories/stub';
+import { MovieCardSelected } from '../../components/movie-card-selected/MovieCardSelected';
 
 export const Home: React.FC = () => {
   
@@ -45,7 +46,7 @@ export const Home: React.FC = () => {
             </Paper>
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
-            <SelectedMovies>Selected movies</SelectedMovies>
+            <SelectedMovies><MovieCardSelected movie={movies[0]} onCardDelete={() => {}} /></SelectedMovies>
           </Grid>
         </Grid>
       </Box>

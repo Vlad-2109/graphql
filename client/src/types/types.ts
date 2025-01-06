@@ -1,5 +1,5 @@
 export interface ICardMenuProps {
-  onCardSelect: (movie: IMovie) => void;
+  children: any;
 }
 
 export interface IMovieCardProps {
@@ -7,9 +7,20 @@ export interface IMovieCardProps {
   onCardSelect: (movie: IMovie) => void;
 }
 
+export interface IMovieCardSelectedProps {
+  movie: IMovie;
+  onCardDelete: () => void;
+}
 export interface IMovie {
-    _id: string;
-    image: string;
-    title: string;
-    releaseDate: string;
+  _id: string;
+  image: string;
+  title: string;
+  releaseDate: string;
+  genres: IGenre[];
+  runtime: number;
+}
+
+export interface IGenre {
+  id: number;
+  name: string;
 }

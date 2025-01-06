@@ -2,7 +2,7 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material';
+import { MenuItem, styled } from '@mui/material';
 import { CardMenu } from '../card-menu/CardMenu';
 import { IMovieCardProps } from '../../types/types';
 
@@ -12,11 +12,16 @@ const CardInfo = styled(CardContent)(({ theme }) => ({
   },
 }));
 
-export const MovieCard: React.FC<IMovieCardProps> = ({ movie, onCardSelect}) => {
-
+export const MovieCard: React.FC<IMovieCardProps> = ({
+  movie,
+  onCardSelect,
+}) => {
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
-      <CardMenu onCardSelect={onCardSelect} />
+      <CardMenu>
+        <MenuItem onClick={() => onCardSelect}></MenuItem>
+      </CardMenu>
+
       <CardMedia
         component="img"
         height="250"
