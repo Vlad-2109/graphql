@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material';
 import { CardMenu } from '../card-menu/CardMenu';
+import { IMovieCardProps } from '../../types/types';
 
 const CardInfo = styled(CardContent)(({ theme }) => ({
   '&:last-child': {
@@ -11,24 +12,23 @@ const CardInfo = styled(CardContent)(({ theme }) => ({
   },
 }));
 
-export const MovieCard: React.FC = () => {
-  const onAddClick = () => alert('movie is added');
+export const MovieCard: React.FC<IMovieCardProps> = ({ movie, onCardSelect}) => {
 
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
-      <CardMenu onAddClick={onAddClick} />
+      <CardMenu onCardSelect={onCardSelect} />
       <CardMedia
         component="img"
         height="250"
-        image="https://media.themoviedb.org/t/p/w220_and_h330_face/iSHovbdANmUUwp4tTCYc9gTSFlj.jpg"
-        alt="Paella dish"
+        image={movie.image}
+        alt={movie.title}
       />
       <CardInfo>
         <Typography variant="h6" gutterBottom component="div">
-          Sonic the Hedgehog 2
+          {movie.title}
         </Typography>
         <Typography variant="subtitle1" gutterBottom component="div">
-          Apr 08, 2022
+          {movie.releaseDate}
         </Typography>
       </CardInfo>
     </Card>

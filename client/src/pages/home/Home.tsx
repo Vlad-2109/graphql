@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { MovieCard } from '../../components/movie-card/MovieCard';
+import { movies } from '../../stories/stub';
 
 export const Home: React.FC = () => {
   
@@ -28,16 +29,16 @@ export const Home: React.FC = () => {
               <Box sx={{ flexGrow: 1, padding: 1 }}>
                 <Grid container spacing={2}>
                   <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-                    <MovieCard />
+                    <MovieCard movie={movies[0]} onCardSelect={() => {}} />
                   </Grid>
                   <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-                    <MovieCard />
+                    <MovieCard movie={movies[0]} onCardSelect={() => {}} />
                   </Grid>
                   <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-                    <MovieCard />
+                    <MovieCard movie={movies[0]} onCardSelect={() => {}} />
                   </Grid>
                   <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-                    <MovieCard />
+                    <MovieCard movie={movies[0]} onCardSelect={() => {}} />
                   </Grid>
                 </Grid>
               </Box>
