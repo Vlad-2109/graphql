@@ -19,7 +19,7 @@ export const MovieCard: React.FC<IMovieCardProps> = ({
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
       <CardMenu>
-        <MenuItem onClick={() => onCardSelect}>Select</MenuItem>
+        <MenuItem onClick={() => onCardSelect(movie)}>Select</MenuItem>
       </CardMenu>
 
       <CardMedia

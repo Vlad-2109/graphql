@@ -7,10 +7,7 @@ import { MenuItem } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { IMovieCardSelectedProps } from '../../types/types';
 
-export const MovieCardSelected: React.FC<IMovieCardSelectedProps> = ({
-  movie,
-  onCardDelete,
-}) => {
+export const MovieCardSelected: React.FC<IMovieCardSelectedProps> = ({ movie, onCardDelete }) => {
   return (
     <Card sx={{ display: 'flex' }}>
       <CardMedia
@@ -51,7 +48,7 @@ export const MovieCardSelected: React.FC<IMovieCardSelectedProps> = ({
           </Typography>
         </Box>
         <CardMenu>
-          <MenuItem onClick={onCardDelete}>Delete</MenuItem>
+          <MenuItem onClick={() => onCardDelete(movie)}>Delete</MenuItem>
         </CardMenu>
       </Box>
     </Card>
