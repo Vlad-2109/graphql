@@ -12,7 +12,7 @@ export interface IMovieCardSelectedProps {
   onCardDelete: () => void;
 }
 export interface IMovie {
-  _id: string;
+  id: string;
   image: string;
   title: string;
   releaseDate: string;

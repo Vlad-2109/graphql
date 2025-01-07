@@ -1,6 +1,6 @@
 export const movies = [
   {
-    _id: '677bc46c4645195d1ce6ee9c',
+    id: '677bc46c4645195d1ce6ee9c',
     image:
       'https://media.themoviedb.org/t/p/w220_and_h330_face/38lb62nJcNvVgCDkFt2wiVE0bX4.jpg',
     title: 'Omatom',
@@ -14,7 +14,7 @@ export const movies = [
     ],
   },
   {
-    _id: '677bc46cd83f7f1ba1a64e44',
+    id: '677bc46cd83f7f1ba1a64e44',
     image:
       'https://media.themoviedb.org/t/p/w220_and_h330_face/fiMBvj4SBHX0MNTrAV2wszoFzdn.jpg',
     title: 'Shepard',
@@ -28,7 +28,7 @@ export const movies = [
     ],
   },
   {
-    _id: '677bc46c7c0beea57c682007',
+    id: '677bc46c7c0beea57c682007',
     image:
       'https://media.themoviedb.org/t/p/w220_and_h330_face/fiMBvj4SBHX0MNTrAV2wszoFzdn.jpg',
     title: 'Eyeris',
@@ -42,7 +42,7 @@ export const movies = [
     ],
   },
   {
-    _id: '677bc46c1b37e7d1b7240536',
+    id: '677bc46c1b37e7d1b7240536',
     image:
       'https://media.themoviedb.org/t/p/w220_and_h330_face/fiMBvj4SBHX0MNTrAV2wszoFzdn.jpg',
     title: 'Translink',
@@ -56,7 +56,7 @@ export const movies = [
     ],
   },
   {
-    _id: '677bc46ce325930227dfce60',
+    id: '677bc46ce325930227dfce60',
     image:
       'https://media.themoviedb.org/t/p/w220_and_h330_face/fiMBvj4SBHX0MNTrAV2wszoFzdn.jpg',
     title: 'Exospace',
@@ -70,7 +70,7 @@ export const movies = [
     ],
   },
   {
-    _id: '677bc46c8d902e10ddc5ecb3',
+    id: '677bc46c8d902e10ddc5ecb3',
     image:
       'https://media.themoviedb.org/t/p/w220_and_h330_face/fiMBvj4SBHX0MNTrAV2wszoFzdn.jpg',
     title: 'Puria',
@@ -84,7 +84,7 @@ export const movies = [
     ],
   },
   {
-    _id: '677bc46c89fe9c14d751df37',
+    id: '677bc46c89fe9c14d751df37',
     image:
       'https://media.themoviedb.org/t/p/w220_and_h330_face/fiMBvj4SBHX0MNTrAV2wszoFzdn.jpg',
     title: 'Zaphire',
