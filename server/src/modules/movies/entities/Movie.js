@@ -18,7 +18,8 @@ class Movie {
 	}
 
 	releaseDate(params) {
-		return params.format
+		console.log(params.format)
+		return params.format && this.movie.release_date
 			? format(new Date(this.movie.release_date), params.format)
 			: this.movie.release_date;
 	}

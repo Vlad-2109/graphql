@@ -25,6 +25,12 @@ export const Home: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const { loading, error, data } = useQuery(MOVIES_QUERY, {
     variables: { page },
+    onCompleted: (data) => {
+      console.log('Fetched data:', data);
+    },
+    onError: (error) => {
+      console.error('Error fetching data:', error.message);
+    },
   });
 
   const { selectedMovies, selectMovie, deleteMovie } = useMovies();
@@ -67,7 +73,7 @@ export const Home: React.FC = () => {
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
                 <Pagination
-                  count={data?.movies?.totalPages}
+                  count={500}
                   page={page}
                   onChange={paginationHandler}
                 />
