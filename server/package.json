@@ -12,6 +12,7 @@
 	"dependencies": {
 		"apollo-server": "^3.13.0",
 		"axios": "^1.7.9",
+		"date-fns": "^4.1.0",
 		"graphql": "^16.10.0"
 	}
 }
