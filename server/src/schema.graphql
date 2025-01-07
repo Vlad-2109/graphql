@@ -3,17 +3,17 @@ type Query {
 }
 
 type Movies {
-	page: Int!;
-	totalResults: Int!,
-	totalPages: Int!,
+	page: Int!
+	totalResults: Int!
+	totalPages: Int!
 	results: [Movie!]!
 }
 
 type Movie {
-	id: ID!,
-	title: String!,
-	releaseDate: String!,
-	posterPath: String!,
+	id: ID!
+	title: String!
+	releaseDate: String!
+	posterPath: String!
 	genres: [Genre]
 }
 
