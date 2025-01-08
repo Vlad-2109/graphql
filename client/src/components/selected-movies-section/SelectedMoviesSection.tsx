@@ -6,7 +6,11 @@ import Typography from '@mui/material/Typography';
 import { MovieCardSelected } from '../movie-card-selected/MovieCardSelected';
 import { SelectedMoviesForm } from '../selected-movies-form/SelectedMoviesForm';
 import noMoviesImageSrc from '../../assets/no_movies.png';
-import { IMovie, ISelectedMoviesSectionProps } from '../../types/types';
+import {
+  FormValues,
+  IMovie,
+  ISelectedMoviesSectionProps,
+} from '../../types/types';
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -46,10 +50,14 @@ const NoMovies = styled(Box)(() => ({
   flexDirection: 'column',
 }));
 
-export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({
-  selectedMovies,
-  deleteMovie,
-}) => {
+export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({ selectedMovies, deleteMovie }) => {
+
+  const onSubmit = ({ listName }: FormValues) => {
+    const ids = selectedMovies.map(({ id }) => id);
+    const link = `${location.host}/recommendation?title=${listName}&ids=${ids.join()}`;
+    console.log(link)
+  };
+
   if (!selectedMovies.length) {
     return (
       <SelectedMovies>
@@ -83,7 +91,7 @@ export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({
         ))}
       </MoviesList>
       <Box pt={2}>
-        <SelectedMoviesForm />
+        <SelectedMoviesForm onSubmit={onSubmit} />
       </Box>
     </SelectedMovies>
   );

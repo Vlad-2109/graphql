@@ -15,7 +15,15 @@ export interface IMovieCardSelectedProps {
 export interface ISelectedMoviesSectionProps {
   selectedMovies: IMovie[];
   deleteMovie: (movie: IMovie) => void;
-};
+}
+
+export interface ISelectedMoviesFormProps {
+  onSubmit: (e: FormValues) => void;
+}
+
+export interface FormValues {
+  listName: string;
+}
 export interface IMovie {
   id: string;
   image: string;
