@@ -4,23 +4,13 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
-import { styled } from '@mui/material/styles';
 import { MovieCard } from '../../components/movie-card/MovieCard';
-import { MovieCardSelected } from '../../components/movie-card-selected/MovieCardSelected';
+import { SelectedMoviesSection } from '../../components/selected-movies-section/SelectedMoviesSection';
 import { MOVIES_QUERY } from './queries';
 import { useMovies } from '../../hooks/useMovies';
 import { IMovie } from '../../types/types';
 
 export const Home: React.FC = () => {
-  const SelectedMovies = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    color: theme.palette.text.secondary,
-    height: 'calc(100vh - 140px)',
-    position: 'sticky',
-    top: theme.spacing(2),
-  }));
 
   const [page, setPage] = useState<number>(1);
   const { loading, error, data } = useQuery(MOVIES_QUERY, {
@@ -42,6 +32,8 @@ export const Home: React.FC = () => {
   if (error) {
     return 'Error';
   }
+
+  const pagesCount = data?.movies?.totalPages <= 500 ? data?.movies?.totalPages : 500;
 
   return (
     <>
@@ -73,7 +65,7 @@ export const Home: React.FC = () => {
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
                 <Pagination
-                  count={500}
+                  count={pagesCount}
                   page={page}
                   onChange={paginationHandler}
                 />
@@ -81,15 +73,10 @@ export const Home: React.FC = () => {
             </Paper>
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
-            <SelectedMovies>
-              {selectedMovies.map((movie: IMovie) => (
-                <MovieCardSelected
-                  key={movie.id}
-                  movie={movie}
-                  onCardDelete={deleteMovie}
-                />
-              ))}
-            </SelectedMovies>
+            <SelectedMoviesSection
+              selectedMovies={selectedMovies}
+              deleteMovie={deleteMovie}
+            />
           </Grid>
         </Grid>
       </Box>

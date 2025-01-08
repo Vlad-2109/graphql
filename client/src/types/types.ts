@@ -11,6 +11,11 @@ export interface IMovieCardSelectedProps {
   movie: IMovie;
   onCardDelete: (movie: IMovie) => void;
 }
+
+export interface ISelectedMoviesSectionProps {
+  selectedMovies: IMovie[];
+  deleteMovie: (movie: IMovie) => void;
+};
 export interface IMovie {
   id: string;
   image: string;

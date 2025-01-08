@@ -19,6 +19,7 @@ export const CardMenu: React.FC<ICardMenuProps> = ({ children }) => {
       <IconButton
         sx={{
           position: 'absolute',
+          zIndex: 2,
           right: 5,
           top: 5,
           background: 'rgba(255, 255, 255, .3)',
@@ -41,6 +42,7 @@ export const CardMenu: React.FC<ICardMenuProps> = ({ children }) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        onClick={handleClose}
         slotProps={{
           paper: {
             style: {
