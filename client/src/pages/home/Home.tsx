@@ -7,7 +7,7 @@ import Pagination from '@mui/material/Pagination';
 import { MovieCard } from '../../components/movie-card/MovieCard';
 import { SelectedMoviesSection } from '../../components/selected-movies-section/SelectedMoviesSection';
 import { MOVIES_QUERY } from './queries';
-import { useMovies } from '../../hooks/useMovies';
+import { useMovies } from '../../hooks/useMovies/useMovies';
 import { IMovie } from '../../types/types';
 
 export const Home: React.FC = () => {
