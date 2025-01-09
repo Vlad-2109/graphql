@@ -23,6 +23,23 @@ const getPopular = async (page) => {
 	}
 };
 
+const getDetails = (id) => {
+	try {
+		return axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
+			params: { language: 'en-US' },
+			headers: {
+				accept: 'application/json',
+				Authorization: `Bearer ${API_KEY}`,
+			},
+		});
+	} catch (error) {
+		console.error('Error fetching movie detail:', error.message);
+
+		throw new Error('Failed to fetch movie detail');
+	}
+};
+
 module.exports = {
 	getPopular,
+	getDetails,
 };
