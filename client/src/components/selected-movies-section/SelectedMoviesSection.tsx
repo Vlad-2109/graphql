@@ -5,12 +5,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { MovieCardSelected } from '../movie-card-selected/MovieCardSelected';
 import { SelectedMoviesForm } from '../selected-movies-form/SelectedMoviesForm';
+import { ConfirmModal } from '../confirm-modal/ConfirmModal';
 import noMoviesImageSrc from '../../assets/no_movies.png';
 import {
   FormValues,
   IMovie,
   ISelectedMoviesSectionProps,
 } from '../../types/types';
+import { useState } from 'react';
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -51,12 +53,20 @@ const NoMovies = styled(Box)(() => ({
 }));
 
 export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({ selectedMovies, deleteMovie }) => {
+  const [listName, setListName] = useState<string>('');
+  const [link, setLink] = useState<string>('');
 
   const onSubmit = ({ listName }: FormValues) => {
     const ids = selectedMovies.map(({ id }) => id);
     const link = `${location.host}/recommendation?title=${listName}&ids=${ids.join()}`;
-    console.log(link)
+    
+    setLink(link);
+    setListName(listName);
   };
+
+  const onCloseConfirmModal = () => {
+    setLink('');
+  }
 
   if (!selectedMovies.length) {
     return (
@@ -93,6 +103,7 @@ export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({ s
       <Box pt={2}>
         <SelectedMoviesForm onSubmit={onSubmit} />
       </Box>
+      <ConfirmModal url={link} title={listName} open={!!link} onClose={onCloseConfirmModal} />
     </SelectedMovies>
   );
 };

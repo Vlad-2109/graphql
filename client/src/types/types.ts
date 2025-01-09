@@ -21,6 +21,13 @@ export interface ISelectedMoviesFormProps {
   onSubmit: (e: FormValues) => void;
 }
 
+export interface IConfirmModalProps {
+  open: boolean;
+  url: string;
+  title: string;
+  onClose: () => void;
+}
+
 export interface FormValues {
   listName: string;
 }
