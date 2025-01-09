@@ -28,6 +28,11 @@ export interface IConfirmModalProps {
   onClose: () => void;
 }
 
+export interface ISocialShareProps {
+  url: string;
+  title: string;
+}
+
 export interface FormValues {
   listName: string;
 }

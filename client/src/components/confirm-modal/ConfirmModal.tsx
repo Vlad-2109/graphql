@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { SocilaShare } from '../social-share/SocilaShare';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -11,7 +13,7 @@ import Alert from '@mui/material/Alert';
 import CloseIcon from '@mui/icons-material/Close';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { IConfirmModalProps } from '../../types/types';
-import { useState } from 'react';
+import { CONFIRM_TIMEOUT } from '../../const';
 
 const style = {
   position: 'absolute',
@@ -20,15 +22,30 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  borderRadius: '8px',
   boxShadow: 24,
   p: 4,
 };
 
-export const ConfirmModal: React.FC<IConfirmModalProps> = ({ open, url, title, onClose }) => {
-
+export const ConfirmModal: React.FC<IConfirmModalProps> = ({
+  open,
+  url,
+  title,
+  onClose,
+}) => {
   const [openAlert, setOpenAlert] = useState<boolean>(false);
-    
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    if (openAlert) {
+      timer = setTimeout(() => {
+        setOpenAlert(false);
+      }, CONFIRM_TIMEOUT);
+    }
+
+    return () => clearTimeout(timer);
+  }, [openAlert]);
+
   return (
     <Modal
       open={open}
@@ -56,7 +73,12 @@ export const ConfirmModal: React.FC<IConfirmModalProps> = ({ open, url, title, o
             inputProps={{ 'aria-label': 'list URL' }}
             value={url}
           />
-          <IconButton sx={{ p: '10px' }} aria-label="preview">
+          <IconButton
+            href={url}
+            target="_blank"
+            sx={{ p: '10px' }}
+            aria-label="preview"
+          >
             <VisibilityIcon />
           </IconButton>
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
@@ -70,6 +92,13 @@ export const ConfirmModal: React.FC<IConfirmModalProps> = ({ open, url, title, o
             </IconButton>
           </CopyToClipboard>
         </Paper>
+
+        <Typography mt={2} id="modal-modal-title" variant="h6" component="h3">
+          Share with friends
+        </Typography>
+
+        <SocilaShare url={url} title={title} />
+
         {openAlert ? (
           <Alert
             action={
@@ -84,7 +113,7 @@ export const ConfirmModal: React.FC<IConfirmModalProps> = ({ open, url, title, o
                 <CloseIcon fontSize="inherit" />
               </IconButton>
             }
-            sx={{ mb: 2 }}
+            sx={{ mt: 2 }}
           >
             Copied!
           </Alert>
