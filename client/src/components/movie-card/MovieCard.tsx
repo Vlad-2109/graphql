@@ -34,12 +34,15 @@ const PlusIcon = styled(Box)(() => ({
 export const MovieCard: React.FC<IMovieCardProps> = ({
   movie,
   onCardSelect,
+  isPreviewMode,
 }) => {
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
-      <CardMenu>
-        <MenuItem onClick={() => onCardSelect(movie)}>Select</MenuItem>
-      </CardMenu>
+      {!isPreviewMode && (
+        <CardMenu>
+          <MenuItem onClick={() => onCardSelect(movie)}>Select</MenuItem>
+        </CardMenu>
+      )}
 
       <Box sx={{ position: 'relative' }}>
         <CardMedia
@@ -48,9 +51,11 @@ export const MovieCard: React.FC<IMovieCardProps> = ({
           image={movie.image}
           alt={movie.title}
         />
-        <PlusIcon onClick={() => onCardSelect(movie)}>
-          <AddCircleOutlineIcon sx={{ fontSize: 80 }} />
-        </PlusIcon>
+        {!isPreviewMode && (
+          <PlusIcon onClick={() => onCardSelect(movie)}>
+            <AddCircleOutlineIcon sx={{ fontSize: 80 }} />
+          </PlusIcon>
+        )}
       </Box>
 
       <CardInfo>

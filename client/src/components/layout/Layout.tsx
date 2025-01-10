@@ -7,7 +7,14 @@ export const Layout: React.FC = () => {
     <>
       <CssBaseline />
       <Navigation />
-      <Box sx={{ backgroundColor: (theme) => theme.palette.grey[100], paddingTop: 2, paddingBottom: 2 }}>
+      <Box
+        sx={{
+          backgroundColor: (theme) => theme.palette.grey[100],
+          paddingTop: 2,
+          paddingBottom: 2,
+          minHeight: 'calc(100vh - 70px)',
+        }}
+      >
         <Container maxWidth="xl">
           <Outlet />
         </Container>

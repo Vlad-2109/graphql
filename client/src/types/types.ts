@@ -5,6 +5,7 @@ export interface ICardMenuProps {
 export interface IMovieCardProps {
   movie: IMovie;
   onCardSelect: (movie: IMovie) => void;
+  isPreviewMode?: boolean;
 }
 
 export interface IMovieCardSelectedProps {
