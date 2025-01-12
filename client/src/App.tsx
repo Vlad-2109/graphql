@@ -1,9 +1,17 @@
 import { useContext } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, ApolloLink, from } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  ApolloLink,
+  from,
+} from '@apollo/client';
 import { router } from './router/router';
-import { AppContext } from './context/appContext';
-import { AppContextType } from './context/contextType';
+import { AppContext } from './providers/appContext/appContext';
+import { AppContextType } from './providers/appContext/contextType';
+import I18nProvider from './providers/i18n'
 
 export const App = () => {
   const { state } = useContext(AppContext) as AppContextType;
@@ -15,7 +23,7 @@ export const App = () => {
     operation.setContext({
       headers: {
         ...customHeaders,
-        locale: state.locale
+        locale: state.locale,
       },
     });
     return forward(operation);
@@ -27,9 +35,11 @@ export const App = () => {
   });
   return (
     <>
-      <ApolloProvider client={client}>
-        <RouterProvider router={router} />
-      </ApolloProvider>
+      <I18nProvider locale={state.locale!}>
+        <ApolloProvider client={client}>
+          <RouterProvider router={router} />
+        </ApolloProvider>
+      </I18nProvider>
     </>
   );
 };

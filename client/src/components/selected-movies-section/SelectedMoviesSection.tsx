@@ -1,3 +1,5 @@
+import { useState, useContext } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
@@ -12,7 +14,8 @@ import {
   IMovie,
   ISelectedMoviesSectionProps,
 } from '../../types/types';
-import { useState } from 'react';
+import { AppContext } from '../../providers/appContext/appContext';
+import { AppContextType } from '../../providers/appContext/contextType';
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -52,21 +55,25 @@ const NoMovies = styled(Box)(() => ({
   flexDirection: 'column',
 }));
 
-export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({ selectedMovies, deleteMovie }) => {
+export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({
+  selectedMovies,
+  deleteMovie,
+}) => {
   const [listName, setListName] = useState<string>('');
   const [link, setLink] = useState<string>('');
+  const { state } = useContext(AppContext) as AppContextType;
 
   const onSubmit = ({ listName }: FormValues) => {
     const ids = selectedMovies.map(({ id }) => id);
-    const link = `${location.host}/recommendation?title=${listName}&ids=${ids.join()}`;
-    
+    const link = `${window.location.host}/recommendation?title=${listName}&locale=${state.locale}&ids=${ids.join()}`;
+
     setLink(link);
     setListName(listName);
   };
 
   const onCloseConfirmModal = () => {
     setLink('');
-  }
+  };
 
   if (!selectedMovies.length) {
     return (
@@ -82,7 +89,7 @@ export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({ s
             src={noMoviesImageSrc}
           />
           <Typography variant="h5" mt={2}>
-            No selected movies
+            <FormattedMessage id="no_selected_movies" />
           </Typography>
         </NoMovies>
       </SelectedMovies>
@@ -103,7 +110,12 @@ export const SelectedMoviesSection: React.FC<ISelectedMoviesSectionProps> = ({ s
       <Box pt={2}>
         <SelectedMoviesForm onSubmit={onSubmit} />
       </Box>
-      <ConfirmModal url={link} title={listName} open={!!link} onClose={onCloseConfirmModal} />
+      <ConfirmModal
+        url={link}
+        title={listName}
+        open={!!link}
+        onClose={onCloseConfirmModal}
+      />
     </SelectedMovies>
   );
 };

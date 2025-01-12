@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -40,7 +41,9 @@ export const MovieCard: React.FC<IMovieCardProps> = ({
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
       {!isPreviewMode && (
         <CardMenu>
-          <MenuItem onClick={() => onCardSelect(movie)}>Select</MenuItem>
+          <MenuItem onClick={() => onCardSelect(movie)}>
+            <FormattedMessage id="select" />
+          </MenuItem>
         </CardMenu>
       )}
 

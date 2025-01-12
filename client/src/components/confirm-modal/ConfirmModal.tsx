@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { SocilaShare } from '../social-share/SocilaShare';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -94,7 +95,7 @@ export const ConfirmModal: React.FC<IConfirmModalProps> = ({
         </Paper>
 
         <Typography mt={2} id="modal-modal-title" variant="h6" component="h3">
-          Share with friends
+          <FormattedMessage id="share_with_friends" />
         </Typography>
 
         <SocilaShare url={url} title={title} />
@@ -115,7 +116,7 @@ export const ConfirmModal: React.FC<IConfirmModalProps> = ({
             }
             sx={{ mt: 2 }}
           >
-            Copied!
+            <FormattedMessage id="copied" />
           </Alert>
         ) : null}
       </Box>

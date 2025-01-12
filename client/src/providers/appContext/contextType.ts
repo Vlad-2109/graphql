@@ -1,5 +1,4 @@
 export enum AppActionKind {
-  RESET = 'reset',
   SETLOCALE = 'setLocale',
 }
 

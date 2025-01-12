@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -58,7 +59,9 @@ export const MovieCardSelected: React.FC<IMovieCardSelectedProps> = ({
           </Typography>
         </Box>
         <CardMenu>
-          <MenuItem onClick={() => onCardDelete(movie)}>Delete</MenuItem>
+          <MenuItem onClick={() => onCardDelete(movie)}>
+            <FormattedMessage id="delete" />
+          </MenuItem>
         </CardMenu>
       </Box>
     </Card>

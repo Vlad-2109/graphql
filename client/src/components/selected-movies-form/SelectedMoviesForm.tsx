@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -24,15 +25,16 @@ export const SelectedMoviesForm: React.FC<ISelectedMoviesFormProps> = ({
           <Field
             name="listName"
             render={({ input, meta }) => (
-              <>
-                <InputBase
-                  sx={{ ml: 1, flex: 1 }}
-                  placeholder="Put the list name"
-                  inputProps={{ 'aria-label': 'put list name' }}
-                  {...input}
-                />
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </>
+              <FormattedMessage id="put_the_list_name">
+                {(placeholder) => (
+                  <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder={String(placeholder)}
+                    inputProps={{ 'aria-label': 'put list name' }}
+                    {...input}
+                  />
+                )}
+              </FormattedMessage>
             )}
           />
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />

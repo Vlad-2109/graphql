@@ -1,4 +1,5 @@
 import { useState, useContext, useCallback } from 'react';
+import { FormattedMessage } from 'react-intl';
 import {
   AppBar,
   Box,
@@ -17,9 +18,13 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Link as RouterLink } from 'react-router-dom';
-import { AppContext } from '../../context/appContext';
-import { AppActionKind, AppContextType } from '../../context/contextType';
+import { AppContext } from '../../providers/appContext/appContext';
+import {
+  AppActionKind,
+  AppContextType,
+} from '../../providers/appContext/contextType';
 import { LOCALES } from '../../const';
+import translate from '../../utils/translate';
 
 export const Navigation: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -44,7 +49,7 @@ export const Navigation: React.FC = () => {
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
-            <ListItemText primary="Settings" />
+            <ListItemText primary={translate('navigation.settings')} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -75,7 +80,7 @@ export const Navigation: React.FC = () => {
               component="div"
               sx={{ color: 'white', flexGrow: 1 }}
             >
-              Movies recommendation
+              <FormattedMessage id="navigation.home" />
             </Typography>
           </Link>
 
@@ -103,7 +108,7 @@ export const Navigation: React.FC = () => {
               to="/settings"
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              Settings
+              <FormattedMessage id="navigation.settings" />
             </Button>
           </Box>
         </Toolbar>

@@ -5,3 +5,5 @@ export const LOCALES = {
   ENGLISH: 'en-us',
   UKRAINIAN: 'uk',
 };
+export const STORAGE_KEY = 'locale';
+
