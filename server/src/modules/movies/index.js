@@ -2,12 +2,12 @@ const axios = require('axios');
 const { Movies } = require('./entities/Movies');
 const { API_KEY } = require('../../config');
 
-const getPopular = async (page) => {
+const getPopular = async (page, language) => {
 	try {
 		const result = await axios.get(
 			'https://api.themoviedb.org/3/movie/popular',
 			{
-				params: { language: 'en-US', page },
+				params: { language, page },
 				headers: {
 					accept: 'application/json',
 					Authorization: `Bearer ${API_KEY}`,
@@ -23,10 +23,10 @@ const getPopular = async (page) => {
 	}
 };
 
-const getDetails = (id) => {
+const getDetails = (id, language) => {
 	try {
 		return axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
-			params: { language: 'en-US' },
+			params: { language },
 			headers: {
 				accept: 'application/json',
 				Authorization: `Bearer ${API_KEY}`,
