@@ -1,3 +1,7 @@
 export const MAX_SELECTED_MOVIES: number = 10;
 export const CONFIRM_TIMEOUT = 3000;
 export const SOCIAL_BUTTON_SIZE = 32;
+export const LOCALES = {
+  ENGLISH: 'en-us',
+  UKRAINIAN: 'uk',
+};

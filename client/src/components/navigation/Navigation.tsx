@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext, useCallback } from 'react';
 import {
   AppBar,
   Box,
@@ -17,9 +17,20 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Link as RouterLink } from 'react-router-dom';
+import { AppContext } from '../../context/appContext';
+import { AppActionKind, AppContextType } from '../../context/contextType';
+import { LOCALES } from '../../const';
 
 export const Navigation: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const { state, dispatch } = useContext(AppContext) as AppContextType;
+
+  const setLanguage = useCallback((locale: string) => {
+    dispatch({
+      type: AppActionKind.SETLOCALE,
+      payload: locale,
+    });
+  }, []);
 
   const list = () => (
     <Box sx={{ width: 250 }} role="presentation">
@@ -67,6 +78,24 @@ export const Navigation: React.FC = () => {
               Movies recommendation
             </Typography>
           </Link>
+
+          <Box>
+            {state.locale}
+            <Button
+              disabled={state.locale === LOCALES.ENGLISH}
+              sx={{ my: 2, color: 'white' }}
+              onClick={() => setLanguage(LOCALES.ENGLISH)}
+            >
+              English
+            </Button>
+            <Button
+              disabled={state.locale === LOCALES.UKRAINIAN}
+              sx={{ my: 2, color: 'white' }}
+              onClick={() => setLanguage(LOCALES.UKRAINIAN)}
+            >
+              Українська
+            </Button>
+          </Box>
 
           <Box sx={{ display: { xs: 'none', lg: 'flex' } }}>
             <Button
