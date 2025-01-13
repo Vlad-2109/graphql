@@ -24,7 +24,7 @@ export const SelectedMoviesForm: React.FC<ISelectedMoviesFormProps> = ({
         <Paper sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
           <Field
             name="listName"
-            render={({ input, meta }) => (
+            render={({ input }) => (
               <FormattedMessage id="put_the_list_name">
                 {(placeholder) => (
                   <InputBase

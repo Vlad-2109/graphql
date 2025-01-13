@@ -25,7 +25,7 @@ export const Home: React.FC = () => {
 
   const { selectedMovies, selectMovie, deleteMovie } = useMovies();
 
-  const paginationHandler = (event: React.ChangeEvent<unknown>, page: number) => {
+  const paginationHandler = (_: any, page: number) => {
     setPage(page);
   };
 
