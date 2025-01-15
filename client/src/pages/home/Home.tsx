@@ -11,7 +11,6 @@ import { useMovies } from '../../hooks/useMovies/useMovies';
 import { IMovie } from '../../types/types';
 
 export const Home: React.FC = () => {
-
   const [page, setPage] = useState<number>(1);
   const { loading, error, data } = useQuery(MOVIES_QUERY, {
     variables: { page },
@@ -33,15 +32,13 @@ export const Home: React.FC = () => {
     return 'Error';
   }
 
-  const pagesCount = data?.movies?.totalPages <= 500 ? data?.movies?.totalPages : 500;
+  const pagesCount =
+    data?.movies?.totalPages <= 500 ? data?.movies?.totalPages : 500;
 
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid size={12}>
-            <Paper>Filters section</Paper>
-          </Grid>
           <Grid size={{ xs: 12, md: 8 }}>
             <Paper>
               <Box sx={{ flexGrow: 1, padding: 1 }}>
